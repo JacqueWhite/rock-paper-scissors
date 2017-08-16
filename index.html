@@ -5,10 +5,89 @@
 </head>
 <body>
 
-User to make a choice
+<!-- User to make a choice
+Computer to make a choice
+Capture choices
+compare choices, determine a win, loss, or tie
+Display the result to the user -->
+<div class="container" id="game">
+	<div class="row">
+		<div class="sm-col-12">
+			<header>Rock, Paper, Scissors!</header>
+			<br>
+			<p>Press "R", "S", or "P" to start the game!</p>
+		</div>
+	</div>
 
+	<div class="row">
+		<div class="sm-col-12" id="userStats">
+		<p><span id="wins"></span></p>
+		<p><span id="losses"></span></p>
+		<p><span id="ties"></span></p>
 
 <script type="text/javascript">
+
+var options = ["r", "p", "s"];
+var wins = 0;
+var losses = 0;
+var ties = 0;
+
+// when user presses a key, it will convert to lowercase 
+document.onkeyup = function() {
+	var userguess = String.fromCharCode(event.keyCode).
+		toLowerCase();
+
+// when user presses the key, it will log it in the console
+	console.log(userguess);
+
+// computers guess is a random letter choice of r p or s
+	var computerGuess = options[Math.floor(Math.random()*options.length)];
+
+// when computer guesses, log into the console
+	console.log(computerGuess);
+
+// conditional statement to make sure they chose R P or S
+	if (userguess=='r' || userguess=='p' || userguess=='s') {
+			
+		if ((userguess=='r') && (computerGuess=='s')) {
+			alert("You win!");
+			wins++;
+		}	
+		if ((userguess=='r') && (computerGuess=='p')) {
+			alert("You lose!");
+			losses++;
+		}	
+		if ((userguess=='s') && (computerGuess=='p')) {
+			alert("You lose!");
+			losses++;
+		}
+		if ((userguess=='s') && (computerGuess=='r')) {
+			alert("You win!");
+			wins++;
+		}
+		if ((userguess=='p') && (comwputerGuess=='s')) {
+			alert("You lose!");
+			losses++;
+		}
+		if ((userguess=='p') && (comwputerGuess=='r')) {
+			alert("You lose!");
+			losses++;
+		}
+		if ((userguess===computerGuess)) {
+			alert("You tie!");
+			ties++;
+		}
+	} else {
+		alert("Please choose r, p, or s");
+	}
+
+	var html = "<p>wins: " + wins + "</p>" + "<p>losses: " + losses + "</p>" + "<p>ties: " + ties + "</p>";
+
+
+	document.querySelector('#game').innerHTML = html;
+}
+	// compare the computer and users guesses
+ 
 
 
 	
